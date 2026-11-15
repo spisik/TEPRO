@@ -26,9 +26,9 @@ void Novel::p() {
     cin >> *this;
 }
 
-ofstream::ofstream& operator<<(std::ofstream& fout, Novel& obj) {
+ofstream& operator<<(std::ofstream& fout, Novel& obj) {
     fout << obj.fio << endl;
-    fout << obj.live << enld;
+    fout << obj.live << endl;
     fout << obj.works << endl;
     fout << obj.bio << endl;
     return fout; 
@@ -62,4 +62,14 @@ istream& operator>>(istream& in, Novel& obj) {
     cout << "Краткая биография: ";
     getline(in, obj.bio);
     return in;
+}
+
+Novel& Novel::operator=(const Novel& other) {
+    if (this != &other) {
+        fio = other.fio;
+        live = other.live;
+        works = other.works;
+        bio = other.bio;
+    }
+    return *this;
 }
